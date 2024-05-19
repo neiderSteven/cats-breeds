@@ -1,22 +1,31 @@
-<label for="catSelect">Select a cat:</label>
-<select id="catSelect" [(ngModel)]="selectedCat" (change)="onCatChange()">
-    <option value="" selected>Select a cat</option>
-    <option *ngFor="let cat of cats" [value]="cat.name">{{ cat.name }}</option>
-</select>
+<mat-form-field>
+    <mat-select [formControl]="catCtrl" placeholder="Select a cat breeds" #singleSelect>
+        <mat-option>
+            <ngx-mat-select-search [formControl]="catFilterCtrl"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option [value]="undefined">
+            Select all
+        </mat-option>
+        <mat-option *ngFor="let cat of itemsMenu" [value]="cat.name">
+            {{ cat.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
 
 <div class="card-container">
     <div class="card" *ngFor="let cat of cats">
         <div class="card-image">
-            <img [src]="cat.imageUrl" alt="Cat Image">
+            <img [src]="cat.imageUrl" alt="Image of {{ cat.name }}">
         </div>
         <div class="card-content">
             <h3>{{ cat.name }}</h3>
-            <button (click)="handleClick(cat)">
-                prueba
-                <!-- <mat-icon>info</mat-icon> -->
+            <h4>{{ cat.breeds[0].temperament }}</h4>
+            <button (click)="onCatClick(cat)">
+                Info
             </button>
         </div>
     </div>
 </div>
 
-<button (click)="loadMoreCats()">Cargar Más</button>
+<button *ngIf="showMore" (click)="loadMoreCats()">Load More</button>

@@ -1,5 +1,5 @@
 .tarjeta {
-    width: 300px;
+    width: auto;
     height: auto;
     background-color: #f0f0f0;
     border-radius: 10px;
@@ -22,4 +22,20 @@
 .tarjeta a {
     text-decoration: none;
     color: blue;
+}
+
+.progress-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 30px;
+    width: 0;
+    background-color: #76c7c0;
+    transition: width 0.5s ease-in-out;
 }

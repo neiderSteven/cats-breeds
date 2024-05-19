@@ -5,11 +5,19 @@ import { CatService } from '../../../shared/services/cat.service';
 
 @Component({
   selector: 'app-detail',
+  standalone: true,
+  imports: [],
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.css'],
+  providers: [CatService]
 })
+
 export class DetailComponent implements OnInit {
-  cat: any = '';
+  cat: Cat | null = null;
+  adaptabilityPercentage: number = 0;
+  childFriendlyPercentage: number = 0;
+  affectionLevelPercentage: number = 0;
+  groomingPercentage: number = 0;
 
   constructor(
     private catService: CatService,
@@ -18,22 +26,37 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const idCat = params.get('id');
-      if (idCat) {
-        this.getCat(idCat);
+      const catId = params.get('id');
+      if (catId) {
+        this.loadCatDetails(catId);
       }
     });
   }
 
-  getCat(id: string): void {
-    this.catService.getCatById(id).subscribe({
-      next: (catData: Cat) => {
-        this.cat = catData;
-      },
-      error: (error) => {
-        console.error('Error fetching cat:', error);
-      },
-      complete: () => console.info('complete')
+  loadCatDetails(catId: string): void {
+    this.catService.getCatById(catId).subscribe({
+      next: (catData: Cat) => this.handleCatData(catData),
+      error: (error) => this.handleError(error),
+      complete: () => console.info('Cat data fetch complete')
     });
+  }
+
+  handleCatData(catData: Cat): void {
+    this.cat = catData;
+    if (this.cat.breeds && this.cat.breeds.length > 0) {
+      const breed = this.cat.breeds[0];
+      this.adaptabilityPercentage = this.calculatePercentage(breed.adaptability);
+      this.childFriendlyPercentage = this.calculatePercentage(breed.child_friendly);
+      this.affectionLevelPercentage = this.calculatePercentage(breed.affection_level);
+      this.groomingPercentage = this.calculatePercentage(breed.grooming);
+    }
+  }
+
+  calculatePercentage(value: number): number {
+    return (value / 10) * 100;
+  }
+
+  handleError(error: any): void {
+    console.error('Error fetching cat:', error);
   }
 }

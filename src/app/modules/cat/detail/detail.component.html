@@ -1,6 +1,29 @@
 <div class="tarjeta">
-    <img src="{{cat?.url}}" alt="Descripción de la imagen" width="300">
-    <p>{{cat?.breeds[0]?.name}}</p>
-    <p>{{cat?.breeds[0]?.description}}</p>
-    <a href="{{cat?.breeds[0]?.wikipedia_url}}" target="_blank">Ir al enlace</a>
+    <img [src]="cat?.url" alt="Imagen de {{ cat?.breeds[0]?.name }}" width="300">
+    <p>{{ cat?.breeds[0]?.name }}</p>
+    <p>{{ cat?.breeds[0]?.description }}</p>
+    <p>{{ cat?.breeds[0]?.temperament }}</p>
+    <p>{{ cat?.breeds[0]?.origin }}</p>
+
+    <label for="adaptability">Adaptación</label>
+    <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="adaptabilityPercentage"></div>
+    </div>
+
+    <label for="childFriendly">Amigable con niños</label>
+    <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="childFriendlyPercentage"></div>
+    </div>
+
+    <label for="affectionLevel">Nivel de afecto</label>
+    <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="affectionLevelPercentage"></div>
+    </div>
+
+    <label for="grooming">Aseo</label>
+    <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="groomingPercentage"></div>
+    </div>
+
+    <a [href]="cat?.breeds[0]?.wikipedia_url" target="_blank">Ir al enlace</a>
 </div>

@@ -16,7 +16,8 @@ export class CatService {
    * @returns Observable<any[]> Observable que emite un array de imágenes de gatos.
    */
   getCatImages(page: number): Observable<any[]> {
-    return this.httpService.get<any[]>(`images/search?has_breeds=true&page=${page}&limit=10`);
+    return this.httpService.get<any[]>(`breeds?limit=10&page=${page}`);
+    // return this.httpService.get<any[]>(`images/search?has_breeds=true&page=${page}&limit=10`);
   }
 
   /**
