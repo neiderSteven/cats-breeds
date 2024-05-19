@@ -1,0 +1,77 @@
+::ng-deep body {
+    padding: 50px;
+    background-color: #0a3d62;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    overflow: hidden;
+    background-color: rgb(252, 252, 252);
+}
+
+.card-image {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.card-image img {
+    width: 80px;
+    /* Adjust the size of the image */
+    height: 80px;
+    /* Adjust the size of the image */
+    object-fit: cover;
+    transform: translateX(-10px);
+    /* Efecto de que la imagen se sale de la tarjeta */
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 90px);
+    /* Adjust based on the image width and margin */
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.card-content button {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.select-panel {
+    z-index: 1000 !important;
+    /* Ajusta esto según sea necesario */
+    max-height: 300px !important;
+    /* Ajusta esto según sea necesario */
+}
+
+.mat-form-field {
+    width: 100%;
+    /* Asegúrate de que el mat-form-field ocupe el ancho completo */
+    margin: 8px 0;
+}
+
+ngx-mat-select-search {
+    margin-bottom: 8px;
+}

@@ -1,0 +1,25 @@
+.tarjeta {
+    width: 300px;
+    height: auto;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta img {
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    margin-bottom: 10px;
+}
+
+.tarjeta a {
+    text-decoration: none;
+    color: blue;
+}

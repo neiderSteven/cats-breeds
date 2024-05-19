@@ -1,0 +1,22 @@
+<label for="catSelect">Select a cat:</label>
+<select id="catSelect" [(ngModel)]="selectedCat" (change)="onCatChange()">
+    <option value="" selected>Select a cat</option>
+    <option *ngFor="let cat of cats" [value]="cat.name">{{ cat.name }}</option>
+</select>
+
+<div class="card-container">
+    <div class="card" *ngFor="let cat of cats">
+        <div class="card-image">
+            <img [src]="cat.imageUrl" alt="Cat Image">
+        </div>
+        <div class="card-content">
+            <h3>{{ cat.name }}</h3>
+            <button (click)="handleClick(cat)">
+                prueba
+                <!-- <mat-icon>info</mat-icon> -->
+            </button>
+        </div>
+    </div>
+</div>
+
+<button (click)="loadMoreCats()">Cargar Más</button>
