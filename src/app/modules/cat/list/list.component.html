@@ -19,13 +19,19 @@
             <img [src]="cat.imageUrl" alt="Image of {{ cat.name }}">
         </div>
         <div class="card-content">
-            <h3>{{ cat.name }}</h3>
-            <h4>{{ cat.breeds[0].temperament }}</h4>
+            <strong>{{ cat.name }}</strong>
+            <p>{{ cat.breeds[0].temperament }}</p>
             <button (click)="onCatClick(cat)">
-                Info
+                <mat-icon>info</mat-icon>
             </button>
         </div>
     </div>
 </div>
 
-<button *ngIf="showMore" (click)="loadMoreCats()">Load More</button>
+<br>
+<div class="btn-show">
+    <button class="show-more" *ngIf="showMore" (click)="loadMoreCats()">
+        <mat-icon class="icon">arrow_downward</mat-icon>
+        <p>Load More</p>
+    </button>
+</div>

@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class HttpService {
-  private apiUrl = 'https://api.thecatapi.com/v1';
+  private apiUrl: string;
   private apiKey: string;
 
   constructor(private http: HttpClient) {
-    this.apiKey = 'live_qdy9f1yhdg27In6NsCiHE81BxaTipdg3Kz9Q2UrkiqylAwzffUqMrVwqtXXKPhpB';
+    this.apiUrl = environment.apiUrl;
+    this.apiKey = environment.apiKey;
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {

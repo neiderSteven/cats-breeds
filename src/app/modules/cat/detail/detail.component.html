@@ -1,29 +1,43 @@
-<div class="tarjeta">
-    <img [src]="cat?.url" alt="Imagen de {{ cat?.breeds[0]?.name }}" width="300">
-    <p>{{ cat?.breeds[0]?.name }}</p>
-    <p>{{ cat?.breeds[0]?.description }}</p>
-    <p>{{ cat?.breeds[0]?.temperament }}</p>
-    <p>{{ cat?.breeds[0]?.origin }}</p>
+<div class="card-detail">
+    <div class="image">
+        <img [src]="cat?.url" alt="cat?.breeds[0]?.name" width="300">
 
-    <label for="adaptability">Adaptación</label>
-    <div class="progress-container">
-        <div class="progress-bar" [style.width.%]="adaptabilityPercentage"></div>
+
+        <label for="adaptability">Adaptation</label>
+        <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="adaptabilityPercentage"></div>
+        </div>
+
+        <label for="childFriendly">Child friendly</label>
+        <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="childFriendlyPercentage"></div>
+        </div>
+
+        <label for="affectionLevel">Affection level</label>
+        <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="affectionLevelPercentage"></div>
+        </div>
+
+        <label for="grooming">Grooming</label>
+        <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="groomingPercentage"></div>
+        </div>
+
     </div>
+    <div class="container">
+        <p class="breeds-text">{{ cat?.breeds[0]?.name }}</p>
+        <p>{{ cat?.breeds[0]?.description }}</p>
+        <p><strong>Temperament:</strong> {{ cat?.breeds[0]?.temperament }}</p>
+        <p><strong>Locate:</strong> {{ cat?.breeds[0]?.origin }}</p>
 
-    <label for="childFriendly">Amigable con niños</label>
-    <div class="progress-container">
-        <div class="progress-bar" [style.width.%]="childFriendlyPercentage"></div>
+
+
+        <br>
+        <a [href]="cat?.breeds[0]?.wikipedia_url" target="_blank">
+            <button class="btn">
+                <mat-icon class="icon">arrow_forward</mat-icon>
+                <p class="text-btn">Ver en wikipedia</p>
+            </button>
+        </a>
     </div>
-
-    <label for="affectionLevel">Nivel de afecto</label>
-    <div class="progress-container">
-        <div class="progress-bar" [style.width.%]="affectionLevelPercentage"></div>
-    </div>
-
-    <label for="grooming">Aseo</label>
-    <div class="progress-container">
-        <div class="progress-bar" [style.width.%]="groomingPercentage"></div>
-    </div>
-
-    <a [href]="cat?.breeds[0]?.wikipedia_url" target="_blank">Ir al enlace</a>
 </div>

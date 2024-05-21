@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cat } from '../../../shared/interfaces/cat.interface';
 import { CatService } from '../../../shared/services/cat.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
   providers: [CatService]
 })
 
 export class DetailComponent implements OnInit {
-  cat: Cat | null = null;
+  cat: any = null;
   adaptabilityPercentage: number = 0;
   childFriendlyPercentage: number = 0;
   affectionLevelPercentage: number = 0;
@@ -42,6 +43,7 @@ export class DetailComponent implements OnInit {
   }
 
   handleCatData(catData: Cat): void {
+    console.log(catData);
     this.cat = catData;
     if (this.cat.breeds && this.cat.breeds.length > 0) {
       const breed = this.cat.breeds[0];

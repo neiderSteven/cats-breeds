@@ -1,32 +1,41 @@
-.tarjeta {
-    width: auto;
+.card-detail {
     height: auto;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
+    padding: 50px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 27%);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    @media only screen and (max-width: 768px) {
+        display: block !important;
+    }
 }
 
-.tarjeta img {
-    margin-bottom: 10px;
+img {
+    box-shadow: 0 4px 8px rgb(27 62 87 / 21%);
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    
+    @media only screen and (max-width: 768px) {
+        margin-top: 80px;
+    }
 }
 
-.tarjeta p {
-    margin-bottom: 10px;
-}
-
-.tarjeta a {
-    text-decoration: none;
-    color: blue;
+.container {
+    margin-left: 100px;
+    margin-right: 50px;
+    
+    @media only screen and (max-width: 768px) {
+        margin-left: 0 !important;
+    }
 }
 
 .progress-container {
-    width: 100%;
-    max-width: 500px;
+    height: 15px;
     background-color: #e0e0e0;
     border-radius: 25px;
     overflow: hidden;
@@ -34,8 +43,38 @@
 }
 
 .progress-bar {
-    height: 30px;
-    width: 0;
-    background-color: #76c7c0;
+    height: 15px;
+    background-color: #81add4;
     transition: width 0.5s ease-in-out;
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-flex;
+    border: none;
+    border-radius: 25px;
+    padding: 6px;
+    background-color: rgb(220 220 220);
+    text-decoration: auto;
+    color: #424242;
+}
+
+.breeds-text {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 60px;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 40px;
+        position: absolute;
+        top: 40px;
+    }
+}
+
+.icon {
+    padding: 7px;
+}
+
+.text-btn {
+    padding-right: 5px;
 }
