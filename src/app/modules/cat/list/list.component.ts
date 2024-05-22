@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-list',
@@ -38,7 +39,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private catService: CatService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) {
     this.catFilterCtrl.valueChanges.subscribe(breed => this._filterBreeds(breed));
     this.catCtrl.valueChanges.subscribe(breed => this._filterCats(breed));
@@ -63,7 +65,7 @@ export class ListComponent implements OnInit {
   loadCatImages(): void {
     this.catService.getCatImages(this.page).subscribe({
       next: (catsData: any[]) => this.handleCatsData(catsData),
-      error: (error) => this.handleError(error)
+      error: (error) => this.handleError()
     });
   }
 
@@ -77,8 +79,8 @@ export class ListComponent implements OnInit {
     }
   }
 
-  handleError(error: any): void {
-    console.error('Error fetching cat images:', error);
+  handleError(): void {
+    this.notificationService.showError('try again later!!');
   }
 
   transformCatData(catsData: any[]): Cat[] {

@@ -43,7 +43,6 @@ export class DetailComponent implements OnInit {
   }
 
   handleCatData(catData: Cat): void {
-    console.log(catData);
     this.cat = catData;
     if (this.cat.breeds && this.cat.breeds.length > 0) {
       const breed = this.cat.breeds[0];

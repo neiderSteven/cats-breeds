@@ -2,7 +2,6 @@
     <div class="image">
         <img [src]="cat?.url" alt="cat?.breeds[0]?.name" width="300">
 
-
         <label for="adaptability">Adaptation</label>
         <div class="progress-container">
             <div class="progress-bar" [style.width.%]="adaptabilityPercentage"></div>
@@ -29,8 +28,6 @@
         <p>{{ cat?.breeds[0]?.description }}</p>
         <p><strong>Temperament:</strong> {{ cat?.breeds[0]?.temperament }}</p>
         <p><strong>Locate:</strong> {{ cat?.breeds[0]?.origin }}</p>
-
-
 
         <br>
         <a [href]="cat?.breeds[0]?.wikipedia_url" target="_blank">
